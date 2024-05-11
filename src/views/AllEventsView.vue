@@ -1,14 +1,12 @@
 <script setup>
 import {ref,computed} from 'vue';
-import {useRoute} from 'vue-router';
 
-const route = useRoute();
-const page = computed(()=>{route.query.page || 1});
+const props = defineProps(['page']);
 </script>
 
 <template>
-    <div>
-        <h1>You are on page {{ $route.query.page }}</h1>
+    <div v-if="page">
+        <h1>You are on page {{ page }}</h1>
     </div>
 </template>
 <style >

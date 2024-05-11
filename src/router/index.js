@@ -26,7 +26,8 @@ const router = createRouter({
     {
       path: '/events',
       name: 'all-events',
-      component: AllEventsView
+      component: AllEventsView,
+      props: (route)=> ({page: route.query.page})
     }
   ]
 })
