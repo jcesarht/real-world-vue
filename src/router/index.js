@@ -38,10 +38,35 @@ const router = createRouter({
         },
       ]
     },
+    /** in this case, redict to component event-info to event with params 
+     * first we create a new url and redirect to events before
+     * too is possible make inverte
+    */
+    {
+      path:'/event-info/:id',
+      redirect: to => {
+        return { 
+          name: 'event-details',
+          params: {id: to.params.id}
+        }
+      },
+      children: [
+        { path: 'register', redirect: to =>({ name: 'event-register'})},
+        { path: 'edit', redirect: to =>({ name: 'event-edit'})}
+      ]
+    },
     {
       path: '/about',
       name: 'about',
-      component: AboutView
+      component: AboutView,
+      /* if you wnat add alias you can kae with alias */
+      alias: '/about-me'
+    },
+    /** we need redirect /about-us to /about url */
+    {
+      path: '/about-us',
+      redirect: { name: 'about' }
+      // So, you can access "about" URL with /about, /about-us and about-me
     },
     {
       path: '/events',
