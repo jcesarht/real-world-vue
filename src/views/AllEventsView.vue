@@ -1,12 +1,11 @@
 <script setup>
-import {ref,computed, onMounted, watch, watchEffect} from 'vue';
+import {ref,computed, onMounted, watchEffect} from 'vue';
 import EventCard from '@/components/EventCard.vue';
 import eventClient from '@/services/EventService.js'
 import { RouterLink } from 'vue-router';
 
-
 const props = defineProps(['page']);
-const events = ref(null);
+const events = ref('');
 const totalRecords = ref(0);
 const page = computed(
     ()=>{
