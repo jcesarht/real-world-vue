@@ -27,7 +27,7 @@ const router = createRouter({
       path: '/events',
       name: 'all-events',
       component: AllEventsView,
-      props: (route)=> ({page: route.query.page})
+      props: route => ({ page: parseInt(route.query.page) || 1})
     }
   ]
 })
